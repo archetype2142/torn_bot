@@ -8,8 +8,6 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.{js,jsx}',
     './app/views/**/*.{erb,haml,html,slim}',
-    './app/components/*.rb',
-    './app/components/**/*.{html,erb,slim}',
   ],
   theme: {
     colors: ({ colors }) => ({
