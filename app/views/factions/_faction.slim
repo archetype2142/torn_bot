@@ -1,0 +1,38 @@
+= turbo_frame_tag "faction-result" do
+  h1.text-xl Faction details
+  p
+    span ID:
+    span = factions['ID']
+  p
+    span Name:
+    span = factions['name']
+  p 
+    span Tag:
+    span = factions['tag']
+  p
+    span leader:
+    span = factions['leader']
+  p
+    span co-leader:
+    span = factions['co-leader']
+  p
+    span respect: 
+    span = factions['respect']
+  p 
+    span age: 
+    span = factions['age']
+  p
+    span capacity:
+    span = factions['capacity']
+  p
+    span rank:
+    span = factions['rank']
+  - factions['members'].each do |member_id, member|
+    .border.mt-2.rounded-md.p-5
+      p
+        b ID:
+        span = member_id
+      p
+        span Details:
+        span = member
+

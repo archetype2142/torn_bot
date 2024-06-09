@@ -8,5 +8,11 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "static_pages#homepage"
+  root "factions#index"
+
+  resources :factions, only: :index do
+    collection do
+      post :members
+    end
+  end
 end
