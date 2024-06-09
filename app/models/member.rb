@@ -1,0 +1,1 @@
+class Member < TrackedAsset; end

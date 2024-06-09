@@ -1,0 +1,36 @@
+= turbo_frame_tag "faction-result" do
+  - if !member['rank']
+    p = member
+  - else
+    .border.rounded.p-2.my-5
+      .flex.justify-between
+        h1.text-xl Member details
+        = form_with(model: TrackedAsset.new(user: current_user, asset_number: member['player_id']), url: admin_tracked_assets_path, data: { turbo: false }) do |f|
+          = f.hidden_field :type, value: 'Member'
+          = f.hidden_field :asset_number
+          = f.hidden_field :title, value: member['name']
+          = f.hidden_field :user_id, value: current_user.id
+          = f.submit 'Add', class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+
+      hr.my-2
+      p
+        b ID: 
+        span = member['player_id']
+      p
+        b Name: 
+        span = member['name']
+      p 
+        b Level: 
+        span = member['level']
+      p
+        b Last Action: 
+        span = member['last_action']['relative']
+      p
+        b Active: 
+        span = member['last_action']['status']
+      p
+        b Status: 
+        span = member['status']['state']
+      p 
+        b Desctription: 
+        span = member['status']['description']

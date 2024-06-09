@@ -1,0 +1,28 @@
+.container.mx-auto.py-10
+
+  = form_with url: fetch_asset_admin_torn_api_index_path, class: 'max-w-sm mx-auto' do |f|
+    .flex.gap-2.w-full
+      .mb-5
+        label.block.mb-2.text-sm.font-medium.text-gray-900 for="api_key" User Id
+        = f.text_field :user_id, class: 'input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5', placeholder: "User ID"
+      .mb-5
+        label.block.mb-2.text-sm.font-medium.text-gray-900 for="faction_id" Faction Id
+        = f.text_field :faction_id, class: 'input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5', placeholder: "Faction ID"
+    button.text-white.bg-blue-700.hover:bg-blue-800.focus:ring-4.focus:outline-none.focus:ring-blue-300.font-medium.rounded-lg.text-sm.w-full.sm:w-auto.px-5.py-2.5.text-center type="submit" Submit
+
+  = turbo_frame_tag "faction-result" do
+    h1.text-xl Tracked assets
+    .relative.overflow-x-auto.mt-5
+      table class="w-full text-sm text-left rtl:text-right text-gray-500"
+        thead class="text-xs text-gray-700 uppercase bg-gray-50"
+          tr
+            th scope="col" class="px-6 py-3" ID
+            th scope="col" class="px-6 py-3" Type
+            th scope="col" class="px-6 py-3" Name
+            th scope="col" class="px-6 py-3" Last Check
+        tbody
+          - current_user.tracked_assets.each do |asset|
+            tr class="border-b  hover:bg-gray-50"
+              th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" = asset.asset_number
+              td class="px-6 py-4" = asset.type
+              td class="px-6 py-4" = asset.title

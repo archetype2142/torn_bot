@@ -1,0 +1,1 @@
+class Faction < TrackedAsset; end

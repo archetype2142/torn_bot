@@ -27,6 +27,7 @@ gem 'sidekiq-scheduler'
 gem 'slim'
 gem 'cssbundling-rails'
 gem 'jsbundling-rails'
+gem 'devise-tailwindcssed'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]

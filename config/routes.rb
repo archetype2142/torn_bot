@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -8,11 +9,26 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "factions#index"
 
-  resources :factions, only: :index do
-    collection do
-      post :members
+  devise_scope :user do
+    authenticated :user do
+      root 'admin/torn_api#index', as: :authenticated_root
     end
+
+    unauthenticated do
+      root 'static_pages#homepage', as: :unauthenticated_root
+    end
+  end
+
+  namespace :admin do
+    resources :torn_api, only: :index do
+      collection do
+        post :fetch_asset
+      end
+    end
+
+    resources :tracked_assets, only: :create
+
+    root to: 'torn_api#index'
   end
 end
