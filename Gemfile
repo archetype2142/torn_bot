@@ -25,6 +25,8 @@ gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sidekiq-scheduler'
 gem 'slim'
+gem 'cssbundling-rails'
+gem 'jsbundling-rails'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
