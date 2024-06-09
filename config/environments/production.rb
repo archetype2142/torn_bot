@@ -5,6 +5,8 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.cache_classes = true
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 
@@ -22,6 +24,9 @@ Rails.application.configure do
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
 
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=3600"
+
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false
 
@@ -29,7 +34,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
@@ -40,6 +45,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
+  config.active_storage.variant_processor = :mini_magick
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
