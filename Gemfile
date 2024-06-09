@@ -6,7 +6,7 @@ ruby '3.1.0'
 
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
-gem 'importmap-rails'
+gem 'bootsnap', require: false
 gem 'jbuilder'
 gem 'puma', '>= 5.0'
 gem 'redis', '>= 4.0.1'
@@ -15,7 +15,7 @@ gem 'sqlite3', '~> 1.4'
 gem 'stimulus-rails'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
-
+gem 'sassc-rails'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'image_processing', '~> 1.2'
