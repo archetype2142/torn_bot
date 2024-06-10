@@ -22,7 +22,7 @@ class TrackStatus
       member['status']['state'] == 'Hospital'
     end
 
-    ::DiscordBot::SendHospitalizedMessage.call(context: { asset: asset }, params: { members: hospitalized_members })
+    ::SendHospitalizedMessage.call(context: { asset: asset }, params: { members: hospitalized_members })
   end
 
   def track_member(asset)

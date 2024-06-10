@@ -1,4 +1,4 @@
-class DiscordBot::SendMessage < ApplicationService
+class SendMessage < ApplicationService
   def call
     send_message
 

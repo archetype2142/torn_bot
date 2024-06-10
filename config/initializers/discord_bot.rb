@@ -6,6 +6,6 @@ Bot = Discordrb::Commands::CommandBot.new(
   prefix: '/'
 )
 
-Dir["#{Rails.root}/app/services/discord_bot/commands/*.rb"].each { |file| require file }
+Dir["#{Rails.root}/lib/discord_commands/*.rb"].each { |file| require file }
 
 puts "Invite URL: #{Bot.invite_url}"

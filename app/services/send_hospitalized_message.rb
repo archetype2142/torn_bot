@@ -1,5 +1,5 @@
 
-class DiscordBot::SendHospitalizedMessage < ApplicationService
+class SendHospitalizedMessage < ApplicationService
   def call
     send_message
 
