@@ -5,3 +5,9 @@
   - active_storage_analysis
   - active_storage_purge
 :logfile: ./log/sidekiq.log
+:scheduler:
+  :schedule:
+    track_status:
+      cron: '*/5 * * * *'   # Runs once per 5 mins
+      class: Kickers::StatusTrackingJob
+      description: 'track users and factions'
