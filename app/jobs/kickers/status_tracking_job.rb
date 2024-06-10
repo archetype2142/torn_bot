@@ -5,6 +5,8 @@ class Kickers::StatusTrackingJob
 
   def perform
     User.all.each do |user|
+      next unless user.discord_channels.any?
+
       user.tracked_assets.select(:id).each do |asset|
         ::TrackStatus.perform_async(asset.id)
       end

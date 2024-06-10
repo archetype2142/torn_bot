@@ -31,6 +31,8 @@ class TrackStatus
 
     return unless response.is_a?(Net::HTTPSuccess)
 
+    return if JSON.parse(response.body)['status']['state'] == 'Hospital'
+
     ::SendHospitalizedMessage.call(
       context: { asset: asset },
       params: { members: [ JSON.parse(response.body) ] }
