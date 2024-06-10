@@ -20,6 +20,7 @@
             th scope="col" class="px-6 py-3" Type
             th scope="col" class="px-6 py-3" Name
             th scope="col" class="px-6 py-3" Last Check
+            th
         tbody
           - current_user.tracked_assets.each do |asset|
             tr class="border-b  hover:bg-gray-50"
@@ -27,4 +28,5 @@
               td class="px-6 py-4" = asset.type
               td class="px-6 py-4" = asset.title
               td class="px-6 py-4" = asset.last_checked_at
-
+              td class="px-6 py-4"
+                = button_to "Untrack", admin_tracked_asset_path(asset), method: :delete, data: { turbo: :false }, class: 'text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'

@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :tracked_assets, only: :create
+    resources :tracked_assets, only: %i[create destroy]
 
     root to: 'torn_api#index'
   end

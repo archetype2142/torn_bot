@@ -29,7 +29,12 @@ class TrackStatus
     uri = URI.parse("https://api.torn.com/user/#{asset.asset_number}?selections=&key=#{asset.user.api_key}")
     response = send_request(uri)
 
-    byebug
+    return unless response.is_a?(Net::HTTPSuccess)
+
+    ::SendHospitalizedMessage.call(
+      context: { asset: asset },
+      params: { members: [ JSON.parse(response.body) ] }
+    )
   end
 
   def send_request(uri)

@@ -1,0 +1,4 @@
+track_status:
+  cron: '*/5 * * * *'
+  class: Kickers::StatusTrackingJob
+  description: 'generate sitemap'
