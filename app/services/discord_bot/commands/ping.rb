@@ -1,4 +1,4 @@
-module Ping
+module DiscordBot::Commands::Ping
   extend Discordrb::Commands::CommandContainer
 
   Bot.message(content: "ping") do |event|
