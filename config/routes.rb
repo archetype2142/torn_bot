@@ -1,6 +1,15 @@
 # frozen_string_literal: true
+require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  admin_constraint = ->(request) do
+    request.env['warden'].authenticate(scope: :user).admin?
+  end
+
+  constraints admin_constraint do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

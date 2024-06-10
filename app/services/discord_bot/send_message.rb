@@ -1,26 +1,21 @@
-require 'discordrb'
-
 class DiscordBot::SendMessage < ApplicationService
   def call
-    preload(:discord_bot)
-
-    transaction do
-      send_message
-    end
+    send_message
 
     result
   end
 
   private
 
-  def discord_bot
-    bot = Discordrb::Bot.new(token: ENV['DISCORD_BOT_TOKEN'])
+  def channel_id
+    context[:channel_id] || params[]
+  end
 
-    bot.message do |event|
-      puts "Event received: #{event.inspect}"
-      event.respond 'Pong!'
-    end
+  def message
+    params[:message]
+  end
 
-    bot.run
+  def send_message
+    Bot.send_message(channel_id: channel_id, message: message)
   end
 end

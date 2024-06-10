@@ -18,7 +18,6 @@ gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'sassc-rails'
 gem 'discordrb'
-gem 'bootsnap', require: false
 gem 'devise'
 gem 'image_processing', '~> 1.2'
 gem 'sidekiq'
